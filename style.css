@@ -1,0 +1,90 @@
+
+
+:root {
+  --calculator-layer-size: 100px;
+
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: PingFangSC-Regular, sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator {
+  background-color: #000;
+  width: 100%;
+  max-width: 600px;
+}
+
+h1 {
+  color: white;
+  font-size: 600%;
+  font-weight:normal;
+  margin: 13px;
+  text-align: end;
+  padding-top: 60px;
+  padding-right: 5%;
+  /* direction: rtl */
+}
+
+.calculator-layer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+div > p {
+  width: 21%;
+  height: 0;
+  padding-top: 10.05%;
+  padding-bottom: 10.05%;
+  font-size: 250%;
+  border-radius:50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* text-align: center;
+  line-height: 100px; */
+  margin-bottom: 17px;
+}
+
+#zero {
+  width: 47%;
+  height: 0;
+  padding-top: 10.05%;
+  padding-bottom: 10.05%;
+  padding-left: 9%;
+  justify-content: start;
+  border-radius:50px;
+}
+
+.calculator-layer-element0 {
+  background-color: #aaa;
+  color: #000;
+}
+
+.calculator-layer-element1 {
+  background-color: #fe9e0c;
+  color: #fff;
+}
+
+.calculator-layer-element2 {
+  background-color: #333333;
+  color: #fff;
+}
+
+div > p:hover {
+  background-color: #ccc;
+}
+
+
