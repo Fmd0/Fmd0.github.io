@@ -1,12 +1,13 @@
-let OPERANDINIT=true; // indicate there's an operator is pressed
-// 两件事 表明 前一个按键是四个运算符 或者是 处于初始状态
+let OPERANDINIT=true; 
+// 之前按的键是加减乘除
 
 let ISINIT=true;
+// 之前按的键是等号
+
 let result=0;  // previous result
 
 let preoperand=0; // previous operand
 
-// let operand=0; // current operand
 let operator=-1;// + - * / %
 
 let operatorcnt=0;
@@ -310,8 +311,11 @@ function clickis() {
 }
 
 function clickac() {
-    INIT=true;
+    OPERANDINIT=true;
+    ISINIT=true;
+    operatorcnt=0;
     result=0;
+    preoperand=0;
     data.innerHTML=0;
 }
 
