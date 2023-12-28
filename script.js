@@ -1,7 +1,14 @@
-let INIT=true; // indicate there's an operator is pressed
-let result=0;  // previous operand
+let OPERANDINIT=true; // indicate there's an operator is pressed
+// 两件事 表明 前一个按键是四个运算符 或者是 处于初始状态
+
+let ISINIT=true;
+let result=0;  // previous result
+
+let preoperand=0; // previous operand
+
 // let operand=0; // current operand
 let operator=-1;// + - * / %
+
 let operatorcnt=0;
 
 const data=document.getElementById("data");
@@ -31,9 +38,10 @@ const ac=document.getElementById("ac");
 
 function clickzero() {
     let operand=0;
-    if(INIT) {
+    if(ISINIT || OPERANDINIT) {
         operand=0;
-        INIT=false;
+        ISINIT=false;
+        OPERANDINIT=false;
     }
     else {
         operand=Number(data.innerHTML+"0")
@@ -43,9 +51,10 @@ function clickzero() {
 
 function clickone() {
     let operand=0;
-    if(INIT) {
+    if(ISINIT || OPERANDINIT) {
         operand=1;
-        INIT=false;
+        ISINIT=false;
+        OPERANDINIT=false;
     }
     else {
         operand=Number(data.innerHTML+"1")
@@ -55,9 +64,10 @@ function clickone() {
 
 function clicktwo() {
     let operand=0;
-    if(INIT) {
+    if(ISINIT || OPERANDINIT) {
         operand=2;
-        INIT=false;
+        ISINIT=false;
+        OPERANDINIT=false;
     }
     else {
         operand=Number(data.innerHTML+"2")
@@ -68,9 +78,10 @@ function clicktwo() {
 
 function clickthree() {
     let operand=0;
-    if(INIT) {
+    if(ISINIT || OPERANDINIT) {
         operand=3;
-        INIT=false;
+        ISINIT=false;
+        OPERANDINIT=false;
     }
     else {
         operand=Number(data.innerHTML+"3")
@@ -81,9 +92,10 @@ function clickthree() {
 
 function clickfour() {
     let operand=0;
-    if(INIT) {
+    if(ISINIT || OPERANDINIT) {
         operand=4;
-        INIT=false;
+        ISINIT=false;
+        OPERANDINIT=false;
     }
     else {
         operand=Number(data.innerHTML+"4")
@@ -94,9 +106,10 @@ function clickfour() {
 
 function clickfive() {
     let operand=0;
-    if(INIT) {
+    if(ISINIT || OPERANDINIT) {
         operand=5;
-        INIT=false;
+        ISINIT=false;
+        OPERANDINIT=false;
     }
     else {
         operand=Number(data.innerHTML+"5")
@@ -107,9 +120,10 @@ function clickfive() {
 
 function clicksix() {
     let operand=0;
-    if(INIT) {
+    if(ISINIT || OPERANDINIT) {
         operand=6;
-        INIT=false;
+        ISINIT=false;
+        OPERANDINIT=false;
     }
     else {
         operand=Number(data.innerHTML+"6")
@@ -120,9 +134,10 @@ function clicksix() {
 
 function clickseven() {
     let operand=0;
-    if(INIT) {
+    if(ISINIT || OPERANDINIT) {
         operand=7;
-        INIT=false;
+        ISINIT=false;
+        OPERANDINIT=false;
     }
     else {
         operand=Number(data.innerHTML+"7")
@@ -133,9 +148,10 @@ function clickseven() {
 
 function clickeight() {
     let operand=0;
-    if(INIT) {
+    if(ISINIT || OPERANDINIT) {
         operand=8;
-        INIT=false;
+        ISINIT=false;
+        OPERANDINIT=false;
     }
     else {
         operand=Number(data.innerHTML+"8")
@@ -146,9 +162,10 @@ function clickeight() {
 
 function clicknine() {
     let operand=0;
-    if(INIT) {
+    if(ISINIT || OPERANDINIT) {
         operand=9;
-        INIT=false;
+        ISINIT=false;
+        OPERANDINIT=false;
     }
     else {
         operand=Number(data.innerHTML+"9")
@@ -157,11 +174,12 @@ function clicknine() {
 }
 
 function clickplus() {
-    if(INIT) {
+    if(OPERANDINIT) {
         operator=1;
         return;        
     }
-    INIT=true;
+    OPERANDINIT=true;
+    ISINIT=false;
     if(operatorcnt>=1) clickis();
     operator=1;
     result=Number(data.innerHTML);
@@ -169,11 +187,12 @@ function clickplus() {
 }
 
 function clickminus() {
-    if(INIT) {
+    if(OPERANDINIT) {
         operator=2;
         return;        
     }
-    INIT=true;
+    OPERANDINIT=true;
+    ISINIT=false;
     if(operatorcnt>=1) clickis();
     operator=2;
     result=Number(data.innerHTML);
@@ -181,11 +200,12 @@ function clickminus() {
 }
 
 function clickdivide() {
-    if(INIT) {
+    if(OPERANDINIT) {
         operator=3;
         return;        
     }
-    INIT=true;
+    OPERANDINIT=true;
+    ISINIT=false;
     if(operatorcnt>=1) clickis();
     operator=3;
     result=Number(data.innerHTML);
@@ -193,11 +213,12 @@ function clickdivide() {
 }
 
 function clickmultiple() {
-    if(INIT) {
+    if(OPERANDINIT) {
         operator=4;
         return;        
     }
-    INIT=true;
+    OPERANDINIT=true;
+    ISINIT=false;
     if(operatorcnt>=1) clickis();
     operator=4;
     result=Number(data.innerHTML);
@@ -217,6 +238,53 @@ function clicksymbol() {
 }
 
 function clickis() {
+    if(OPERANDINIT) {
+        preoperand=result;
+        switch(operator) {
+            case 1:
+                result+=result;
+                break
+            case 2:
+                result-=result;
+                break
+            case 3:
+                result/=result;
+                break
+            case 4:
+                result*=result;
+                break
+            default:
+                console.log("operator error")
+        }
+        OPERANDINIT=false;
+        ISINIT=true;
+        data.innerHTML=result;
+        return;
+    }
+
+    if(ISINIT) {
+        switch(operator) {
+            case 1:
+                result+=preoperand;
+                break
+            case 2:
+                result-=preoperand;
+                break
+            case 3:
+                result/=preoperand;
+                break
+            case 4:
+                result*=preoperand;
+                break
+            default:
+                console.log("operator error")
+        }
+        OPERANDINIT=false;
+        ISINIT=true;
+        data.innerHTML=result;
+        return;
+    }
+
     switch(operator) {
         case 1:
             result+=Number(data.innerHTML);
@@ -233,7 +301,9 @@ function clickis() {
         default:
             console.log("operator error")
     }
-
+    ISINIT=true;
+    OPERANDINIT=false;
+    preoperand=Number(data.innerHTML);
     data.innerHTML=result;
     operatorcnt=0;
     // result=0;
@@ -268,4 +338,4 @@ symbol.addEventListener("click", clicksymbol);
 
 is.addEventListener("click", clickis);
 ac.addEventListener("click", clickac);
-
+ 
