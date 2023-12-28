@@ -4,6 +4,9 @@ let OPERANDINIT=true;
 let ISINIT=true;
 // 之前按的键是等号
 
+// let DOTINIT=false;
+// 之前按的键是点号
+
 let result=0;  // previous result
 
 let preoperand=0; // previous operand
@@ -31,6 +34,7 @@ const minus=document.getElementById("minus");
 const divide=document.getElementById("divide");
 const percent=document.getElementById("percent");
 const symbol=document.getElementById("symbol");
+const dot=document.getElementById("dot");
 
 
 const is=document.getElementById("is");
@@ -238,7 +242,23 @@ function clicksymbol() {
     data.innerHTML=operand;
 }
 
+function clickdot() {
+    if(ISINIT || OPERANDINIT) {
+        data.innerHTML="0."
+        ISINIT=false;
+        OPERANDINIT=false;
+        return;
+    }
+    let operand=data.innerHTML;
+    operand=operand+".";
+    // DOTINIT=true;
+    data.innerHTML=operand;
+}
+
 function clickis() {
+    if(operatorcnt==0) {
+        return;
+    }
     if(OPERANDINIT) {
         preoperand=result;
         switch(operator) {
@@ -338,6 +358,7 @@ divide.addEventListener("click", clickdivide);
 multiple.addEventListener("click", clickmultiple);
 percent.addEventListener("click", clickpercent);
 symbol.addEventListener("click", clicksymbol);
+dot.addEventListener("click", clickdot);
 
 
 is.addEventListener("click", clickis);
