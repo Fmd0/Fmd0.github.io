@@ -256,9 +256,7 @@ function clickdot() {
 }
 
 function clickis() {
-    if(operatorcnt==0) {
-        return;
-    }
+    
     if(OPERANDINIT) {
         preoperand=result;
         switch(operator) {
@@ -303,6 +301,9 @@ function clickis() {
         OPERANDINIT=false;
         ISINIT=true;
         data.innerHTML=result;
+        return;
+    }
+    if(operatorcnt==0) {
         return;
     }
 
