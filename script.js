@@ -183,9 +183,9 @@ function clickplus() {
         operator=1;
         return;        
     }
+    if(operatorcnt>=1) clickis();
     OPERANDINIT=true;
     ISINIT=false;
-    if(operatorcnt>=1) clickis();
     operator=1;
     result=Number(data.innerHTML);
     operatorcnt++;
@@ -196,9 +196,9 @@ function clickminus() {
         operator=2;
         return;        
     }
+    if(operatorcnt>=1) clickis();
     OPERANDINIT=true;
     ISINIT=false;
-    if(operatorcnt>=1) clickis();
     operator=2;
     result=Number(data.innerHTML);
     operatorcnt++;
@@ -209,9 +209,9 @@ function clickdivide() {
         operator=3;
         return;        
     }
+    if(operatorcnt>=1) clickis();
     OPERANDINIT=true;
     ISINIT=false;
-    if(operatorcnt>=1) clickis();
     operator=3;
     result=Number(data.innerHTML);
     operatorcnt++;
@@ -222,9 +222,9 @@ function clickmultiple() {
         operator=4;
         return;        
     }
+    if(operatorcnt>=1) clickis();
     OPERANDINIT=true;
     ISINIT=false;
-    if(operatorcnt>=1) clickis();
     operator=4;
     result=Number(data.innerHTML);
     operatorcnt++;
